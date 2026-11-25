@@ -23,6 +23,15 @@ Start the session you orchestrate from on Opus 5.5 high before calling
 - Reviewers always run at high effort. Grok reviews only when you name it.
 - Fable implements only after Opus fails a demanding PR twice.
 
+### How it picks a tier
+
+The orchestrator settles what it can in planning, then rates what is left on
+ambiguity, reach, blast radius and checkability. It starts at Standard, drops
+to Light only when all four are low, and goes to Demanding only when a wrong
+answer would be costly and hard to catch. Every pick is shown in the plan with
+a reason, so you can overrule it. Full rules:
+[Picking a tier](SKILL.md#picking-a-tier).
+
 ## Examples
 
 ```text
