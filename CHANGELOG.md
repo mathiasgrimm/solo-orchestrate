@@ -3,6 +3,11 @@
 Versions follow [semantic versioning](https://semver.org). Install a tagged
 version, not `main`: `main` holds unreleased work.
 
+## 0.2.1 - 2026-11-25
+
+- README explains how the orchestrator picks a tier, with a link to the full
+  rules in SKILL.md.
+
 ## 0.2.0 - 2026-11-25
 
 - Ask Claude to "update solo-orchestrate": it checks for newer release tags,
