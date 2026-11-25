@@ -32,18 +32,38 @@ reviewer runs at high effort.
 
 ## Install
 
+Install a released version, never `main` (it holds unreleased work). The
+latest version is listed in [CHANGELOG.md](CHANGELOG.md).
+
 ```bash
-git clone git@github.com:mathiasgrimm/solo-orchestrate.git ~/.claude/skills/solo-orchestrate
+git clone --branch 0.1.0 git@github.com:mathiasgrimm/solo-orchestrate.git ~/.claude/skills/solo-orchestrate
 ```
 
-Then ask for another agent in your own words: "spin an agent to implement
+## Update
+
+```bash
+cd ~/.claude/skills/solo-orchestrate
+git fetch --tags
+git checkout 0.2.0   # the version you want, from CHANGELOG.md
+```
+
+Start a new Claude Code session afterwards to be sure it loads the new version.
+
+If you customized `SKILL.md`, keep your edits on a local branch
+(`git switch -c my-setup`, commit) and rebase it onto the new tag instead of
+checking the tag out directly.
+
+## Use
+
+Ask for another agent in your own words: "spin an agent to implement
 this", "get codex to review the PR", "check the plan with codex", "you are the
 orchestrator". The skill does not delegate on its own initiative.
 
 ## Customize
 
 Edit the **Roster** and **Worker tiers** tables in `SKILL.md` to match the
-agents and models you have. Everything else is general.
+agents and models you have, on your own local branch (see Update). Everything
+else is general.
 
 ## Files
 
