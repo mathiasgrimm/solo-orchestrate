@@ -51,5 +51,6 @@ Check for local changes first: `git status --porcelain` and `git branch
 ## 5. Confirm
 
 - `git describe --tags` shows the new version.
-- Tell the user to start a new Claude Code session so it loads the new
-  version, and repeat the one-line summary of what changed.
+- Tell the user the running session already uses the new version (Claude
+  Code reads the skill again when it is invoked), and repeat the one-line
+  summary of what changed.
