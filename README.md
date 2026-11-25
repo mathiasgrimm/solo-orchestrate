@@ -1,4 +1,4 @@
-# solo-orchestrate
+<p align="center"><img src="assets/hero.svg" alt="solo-orchestrate: Claude conducts your agents in Solo" width="100%"></p>
 
 A Claude Code skill that orchestrates coding agents through
 [Solo](https://soloterm.com) (an independent skill, not affiliated with Solo).

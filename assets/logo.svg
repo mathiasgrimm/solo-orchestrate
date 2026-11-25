@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="512" height="512" viewBox="0 0 72 72" role="img" aria-label="solo-orchestrate"><rect width="72" height="72" rx="16" fill="#1F33D8"/>
+          <g fill="none" stroke-linecap="round"><path d="M12 36 H26" stroke="#FFFFFF" stroke-width="3"/>
+          <path d="M30 36 C38 36 38 20 46 20 H52" stroke="#3BD68A" stroke-width="2.5"/><path d="M30 36 C38 36 38 52 46 52 H52" stroke="#FFAE4D" stroke-width="3"/>
+          <path d="M30 36 H52" stroke="#C9D0FF" stroke-width="2.5"/></g>
+          <circle cx="29" cy="36" r="4.5" fill="#FFFFFF"/><rect x="55" y="14" width="5" height="44" fill="#FFFFFF"/></svg>
