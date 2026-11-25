@@ -6,6 +6,41 @@ It plans, gets the plan reviewed, has Claude workers implement it, gets the PRs
 reviewed, and verifies every finding itself. Codex only reviews, never
 writes code. Push, PR and merge need your explicit permission.
 
+## Install
+
+Ask Claude Code:
+
+```text
+install the skill from https://github.com/mathiasgrimm/solo-orchestrate
+```
+
+Claude reads this README, finds the newest release tag, and clones that tag
+into `~/.claude/skills/solo-orchestrate`. It never installs `main`, which holds
+unreleased work. The skill is ready in the same session, with no restart.
+
+The same steps by hand:
+
+```bash
+TAG=$(git ls-remote --tags --refs --sort=-v:refname git@github.com:mathiasgrimm/solo-orchestrate.git \
+  | grep -oE 'refs/tags/[0-9]+\.[0-9]+\.[0-9]+$' | head -1 | cut -d/ -f3)
+git clone --branch "$TAG" git@github.com:mathiasgrimm/solo-orchestrate.git ~/.claude/skills/solo-orchestrate
+```
+
+## Update
+
+Ask Claude:
+
+```text
+is there a new version of solo-orchestrate?
+update solo-orchestrate
+update solo-orchestrate to 0.3.1
+```
+
+It shows what changed in newer versions, switches only when you agree, and
+keeps your own edits. By hand: `git fetch --tags && git checkout <version>` in
+`~/.claude/skills/solo-orchestrate`. Versions before 0.2.0 need that manual
+update once, since they don't include the update instructions.
+
 ## Defaults
 
 Start the session you orchestrate from on Opus 5.5 high before calling
@@ -69,41 +104,6 @@ spin a sonnet agent to create a private repo for this project
 ```
 
 Without `/solo-orchestrate`, only the agents you name are started.
-
-## Install
-
-Ask Claude Code:
-
-```text
-install the skill from https://github.com/mathiasgrimm/solo-orchestrate
-```
-
-Claude reads this README, finds the newest release tag, and clones that tag
-into `~/.claude/skills/solo-orchestrate`. It never installs `main`, which holds
-unreleased work. The skill is ready in the same session, with no restart.
-
-The same steps by hand:
-
-```bash
-TAG=$(git ls-remote --tags --refs --sort=-v:refname git@github.com:mathiasgrimm/solo-orchestrate.git \
-  | grep -oE 'refs/tags/[0-9]+\.[0-9]+\.[0-9]+$' | head -1 | cut -d/ -f3)
-git clone --branch "$TAG" git@github.com:mathiasgrimm/solo-orchestrate.git ~/.claude/skills/solo-orchestrate
-```
-
-## Update
-
-Ask Claude:
-
-```text
-is there a new version of solo-orchestrate?
-update solo-orchestrate
-update solo-orchestrate to 0.3.1
-```
-
-It shows what changed in newer versions, switches only when you agree, and
-keeps your own edits. By hand: `git fetch --tags && git checkout <version>` in
-`~/.claude/skills/solo-orchestrate`. Versions before 0.2.0 need that manual
-update once, since they don't include the update instructions.
 
 ## Customize
 
