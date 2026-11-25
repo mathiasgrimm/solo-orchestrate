@@ -9,10 +9,15 @@ First release.
 
 - Claude Code orchestrates and implements; Codex, Grok and other agents only
   review plans and PRs, read-only.
-- Reviews and planning consults run only when the user asks and names the
-  reviewers, always at high effort.
-- Worker tiers: Sonnet 5.5 medium, Opus 5.5 high, Fable 5.2 high, picked per
-  task with escalate and de-escalate rules.
+- `/solo-orchestrate <task>` runs the full pipeline (plan, plan review,
+  implementation, PR review) with per-tier defaults; plain requests start only
+  the roles the user names.
+- Tiers: Light (Sonnet 5.5 medium, Codex review when code changes), Standard
+  (Opus 5.5 high, Codex reviews), Demanding (Opus 5.5 high, Codex and Fable 5.2
+  reviews), Escalation (Fable 5.2 high implements after two failures).
+- Every reviewer runs at high effort; at most one Fable process at a time.
+- Without permission, a run ends with local branches reviewed and ready to
+  push.
 - Permissions live only in the epic todo; timer bodies and agent messages
   never grant anything.
 - Worker brief and review prompt templates, and measured Solo pitfalls.
