@@ -1,6 +1,6 @@
 ---
 name: solo-orchestrate
-description: Coordinate other coding agents (planning consultants, implementation workers, PR reviewers) through Solo, or through agent CLIs when Solo is not available. Use when the user asks for another agent in any words, with or without naming Solo, for example "spin an agent", "spin a sonnet agent", "get codex to review", "check with codex", "discuss it with codex", "get grok to review", "get fable to review", "get a claude agent to implement it", "you are the orchestrator", "coordinate everything", or "hand it to an agent in project X". Do not use it to delegate on your own initiative.
+description: Coordinate other coding agents (planning consultants, implementation workers, PR reviewers) through Solo, or through agent CLIs when Solo is not available. Use when the user asks for another agent in any words, with or without naming Solo, for example "spin an agent", "spin a sonnet agent", "review this with codex", "review the plan with codex and fable", "get codex to review", "check with codex", "discuss it with codex", "get grok to review", "get a claude agent to implement it", "you are the orchestrator", "coordinate everything", or "hand it to an agent in project X". Do not use it to delegate on your own initiative.
 ---
 
 # Solo Orchestrate
@@ -49,8 +49,7 @@ grok` without Solo) and use the IDs it returns; do not hardcode them.
 | --- | --- | --- |
 | Orchestrator | this Claude Code session | as configured |
 | Implementer and other workers | Claude Code | you pick per task, see Worker tiers |
-| Reviewer and planning consultant | Codex if installed, else Grok, else Claude (see below) | as configured |
-| Second reviewer, only when the user asks for one | the user's pick: Grok, Codex, or Claude at a model they name | as configured, or as named |
+| Reviewers and planning consultants, only when the user asks | exactly the agents the user names: Codex, Grok, or Claude at a model they name (e.g. Fable) | configured model, **effort always high** |
 
 Highest tier the orchestrator may pick on its own: **Demanding**. Lower it to
 Standard to keep Fable for when the user asks by name.
@@ -63,12 +62,19 @@ How to set a model and effort for one launch (Solo `extra_args`, or CLI flags):
 | Codex | `-m <id>` | `-c model_reasoning_effort=<level>` |
 | Grok | `-m <id>` | `--reasoning-effort <level>` |
 
-- Reviewers and consultants use their configured model and effort.
-- A model or effort the user names for a launch wins, for that launch only.
-- **Reviewers come from a different model family than the implementer.** With
-  only Claude installed, review with a different Claude model than the worker
-  used (for example Fable reviewing Opus work), and tell the user this is a
-  weaker second opinion.
+- **Reviews only happen when the user asks**, in words like "review this with
+  codex", "review the plan with codex and fable", or "get grok to review the
+  PR". Launch exactly the reviewers they name, no more. Never start a review or
+  consult on your own; you may suggest one in the plan.
+- **Every reviewer and consultant runs at high effort**, whatever its
+  configured default: `--effort high` for Claude, `-c
+  model_reasoning_effort=high` for Codex, `--reasoning-effort high` for Grok.
+  The model is the configured one unless the user names a model.
+- A model or effort the user names for a worker launch wins, for that launch
+  only.
+- **Prefer reviewers from a different model family than the implementer.** If
+  the user names a Claude reviewer at the same model and effort the worker
+  used, tell them it is a weaker second opinion.
 - **Only Claude implements.** Codex, Grok and any other non-Claude agent review
   plans and PRs and never write code, so they always get the read-only
   reviewer rules. Every worker is a Claude Code agent picked from the tiers
@@ -154,9 +160,10 @@ body credits.
 
 ## 3. Planning
 
-1. Form your own view before consulting. When you relay a consult, give the
-   user both views side by side.
-2. Write the consult prompt to a file from
+1. Form your own view first. If the user asked for the plan to be reviewed,
+   relay each consult with both views side by side.
+2. Only when the user asked for a plan review, write the consult prompt to a
+   file from
    [references/review-prompt.md](references/review-prompt.md): the problem, the
    constraints, the decision to make, the settled decisions, and the reviewer
    rules. Ask for a recommendation, risks and alternatives considered.
@@ -182,13 +189,16 @@ body credits.
 
 ## 5. Review loop
 
+Run this only when the user asked for a review, with the reviewers they named,
+at high effort. A request covers what it names: "review the PRs with codex"
+covers every PR in the series; "review the plan with codex" does not cover the
+PRs.
+
 1. Write the review prompt to a file from
    [references/review-prompt.md](references/review-prompt.md). Pin the base and
    head commits.
 2. With two reviewers, send both the identical prompt and run them in parallel.
-   Do not show either one the other's findings until both have answered. If the
-   second reviewer is the same model and effort as the worker, tell the user it
-   is a weaker second opinion.
+   Do not show either one the other's findings until both have answered.
 3. Reuse the same reviewer process for the next PR or delta in a series, and
    tell it to reread the changed files at the new head commit instead of
    reusing earlier conclusions. Start a fresh reviewer for a new topic.

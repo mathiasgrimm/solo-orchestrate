@@ -1,9 +1,9 @@
 # solo-orchestrate
 
 A Claude Code skill that turns a session into an orchestrator of other coding
-agents: it plans, briefs implementation workers, sends their PRs to reviewers
-from a different model family, verifies every finding itself, and routes all
-questions back to you.
+agents: it plans, briefs implementation workers, sends plans and PRs to the
+reviewers you ask for, verifies every finding itself, and routes all questions
+back to you.
 
 It is an independent skill built for [Solo](https://soloterm.com) (not
 affiliated with it), which spawns and watches agent
@@ -12,12 +12,14 @@ running the agent CLIs as background processes.
 
 Claude Code orchestrates and Claude Code agents do all the implementation.
 Codex and Grok are optional: when installed, they review plans and PRs from a
-different model family, and never write code.
+different model family, and never write code. Reviews run only when you ask
+("review this with codex", "review the plan with codex and fable"), and every
+reviewer runs at high effort.
 
 ## What it does
 
-- **Plans first.** Forms its own view, gets a planning consult, verifies the
-  claims, and shows you the plan before any code is written.
+- **Plans first.** Forms its own view, gets a planning consult if you ask for
+  one, verifies the claims, and shows you the plan before any code is written.
 - **Picks the worker model per task.** Light tasks go to Sonnet, regular ones to
   Opus, demanding ones to Fable, and it escalates or steps down as the work
   changes.
