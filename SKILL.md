@@ -1,6 +1,6 @@
 ---
 name: orchestrate
-description: Coordinate other coding agents (planning consultants, implementation workers, PR reviewers) through Solo, or through agent CLIs when Solo is not available. Use when the user asks for another agent in any words, with or without naming Solo, for example "spin an agent", "spin a sonnet agent", "get codex to review", "check with codex", "discuss it with codex", "get fable to review", "get a claude agent to implement it", "you are the orchestrator", "coordinate everything", or "hand it to an agent in project X". Do not use it to delegate on your own initiative.
+description: Coordinate other coding agents (planning consultants, implementation workers, PR reviewers) through Solo, or through agent CLIs when Solo is not available. Use when the user asks for another agent in any words, with or without naming Solo, for example "spin an agent", "spin a sonnet agent", "get codex to review", "check with codex", "discuss it with codex", "get grok to review", "get fable to review", "get a claude agent to implement it", "you are the orchestrator", "coordinate everything", or "hand it to an agent in project X". Do not use it to delegate on your own initiative.
 ---
 
 # Orchestrate
@@ -28,34 +28,51 @@ The core rules:
 
 ## Prerequisites
 
-- Solo with its MCP server enabled in this session, or the agent CLIs below on
-  `PATH` when Solo is absent.
-- Claude Code and Codex installed, signed in, and recent enough for every model
-  in your tiers. Check each model is available on your plan before the first
-  launch. Never buy usage credits or accept a paid upgrade on the user's
-  behalf.
+- The orchestrator is Claude Code. This skill is written for it.
+- Solo with its MCP server enabled in this session, or the agent CLIs on `PATH`
+  when Solo is absent.
+- Claude Code signed in and recent enough for every model in your tiers.
+- Optional: Codex and Grok, signed in. They are the preferred reviewers because
+  they come from other model families. Without them, everything still works
+  with Claude alone (see Roster).
+- Check each model is available on your plan before its first launch. Never
+  buy usage credits or accept a paid upgrade on the user's behalf.
 - `gh` signed in, if PRs are involved.
 
 ## 1. Roster
 
-Edit this table for your own setup. Find the runtime IDs with Solo's
-`list_agent_tools` at the start of each session; do not hardcode them.
+Edit this to match your setup. At the start of each session, list the
+installed runtimes with Solo's `list_agent_tools` (or `command -v claude codex
+grok` without Solo) and use the IDs it returns; do not hardcode them.
 
-| Role | Default agent | Model and effort | Launch |
-| --- | --- | --- | --- |
-| Orchestrator | this session | as configured | n/a |
-| Implementer and other workers | Claude Code | you pick per task, see Worker tiers | `spawn_agent` with the Claude tool and `extra_args` |
-| Reviewer and planning consultant | Codex | as configured | `spawn_agent` with the Codex tool |
-| Second reviewer, only when the user names it | Claude Code | e.g. Fable at high | `extra_args: ["--model", "claude-fable-5-2", "--effort", "high"]` |
+| Role | Who | Model and effort |
+| --- | --- | --- |
+| Orchestrator | this Claude Code session | as configured |
+| Implementer and other workers | Claude Code | you pick per task, see Worker tiers |
+| Reviewer and planning consultant | Codex if installed, else Grok, else Claude (see below) | as configured |
+| Second reviewer, only when the user asks for one | the user's pick: Grok, Codex, or Claude at a model they name | as configured, or as named |
 
 Highest tier the orchestrator may pick on its own: **Demanding**. Lower it to
-Standard to keep Fable for when you ask by name.
+Standard to keep Fable for when the user asks by name.
+
+How to set a model and effort for one launch (Solo `extra_args`, or CLI flags):
+
+| Runtime | Model | Effort |
+| --- | --- | --- |
+| Claude Code | `--model <id>` | `--effort <level>` |
+| Codex | `-m <id>` | `-c model_reasoning_effort=<level>` |
+| Grok | `-m <id>` | `--reasoning-effort <level>` |
 
 - Reviewers and consultants use their configured model and effort.
 - A model or effort the user names for a launch wins, for that launch only.
-- If the implementer is Codex, the reviewer is Claude: swap rather than let
-  anyone review their own work. The tiers below apply to Claude workers only;
-  other agents run as configured.
+- **Reviewers come from a different model family than the implementer.** With
+  only Claude installed, review with a different Claude model than the worker
+  used (for example Fable reviewing Opus work), and tell the user this is a
+  weaker second opinion.
+- **Only Claude implements.** Codex, Grok and any other non-Claude agent review
+  plans and PRs and never write code, so they always get the read-only
+  reviewer rules. Every worker is a Claude Code agent picked from the tiers
+  below.
 - If an agent fails (rate limit, quota, auth, crash, missing CLI, or a safety
   refusal or pause), stop and tell the user: which agent, the actual error, and
   whether it looks retryable. Ask whether to wait, continue short-handed or
@@ -263,10 +280,11 @@ Require a number and a source for every claim, or an explicit "no data found".
 Solo is present when its MCP `whoami` identifies this session. Tool
 availability alone does not prove it. Without Solo:
 
-- **Launch** each agent as a background process from the repository root
-  (`claude -p ...`, `codex exec ...`; check each CLI's `--help` for current
-  flags). Feed the prompt explicitly, close stdin, and capture the session ID
-  and output file.
+- **Launch** each agent as a background process from the repository root, in
+  its single-prompt mode: `claude -p`, `codex exec`, `grok -p`. Check each
+  CLI's `--help` for current flags. Feed the prompt explicitly, close stdin,
+  and capture the session ID and output file (Grok lets you set the ID up
+  front with `--session-id`).
 - **Track** the epic, permissions and process list in a `TASKS.md` in your
   scratchpad instead of Solo todos.
 - **Wait** for each process to exit instead of using idle timers, and read its

@@ -7,7 +7,11 @@ questions back to you.
 
 It is built for [Solo](https://soloterm.com), which spawns and watches agent
 processes and provides todos and idle timers. Without Solo, it falls back to
-running the agent CLIs (Claude Code, Codex) as background processes.
+running the agent CLIs as background processes.
+
+Claude Code orchestrates and Claude Code agents do all the implementation.
+Codex and Grok are optional: when installed, they review plans and PRs from a
+different model family, and never write code.
 
 ## What it does
 
