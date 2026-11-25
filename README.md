@@ -17,12 +17,13 @@ Start the session you orchestrate from on Opus 5.5 high before calling
 
 | Tier | Plan review | Implementer | PR review |
 | --- | --- | --- | --- |
-| Light | none | Sonnet 5.5, medium | Codex, high (code changes only) |
-| Standard | Codex, high | Opus 5.5, high | Codex, high |
-| Demanding | Codex + Fable 5.2, high | Opus 5.5, high | Codex + Fable 5.2, high |
-| Escalation | n/a | Fable 5.2, high | Codex, high |
+| Light | none | Sonnet 5.5, medium | Codex Sol 6.2, high (code changes only) |
+| Standard | Codex Sol 6.2, high | Opus 5.5, high | Codex Sol 6.2, high |
+| Demanding | Codex Astra 6.2 + Fable 5.2, high | Opus 5.5, high | Codex Astra 6.2 + Fable 5.2, high |
+| Escalation | n/a | Fable 5.2, high | Codex Astra 6.2, high |
 
-- Reviewers always run at high effort.
+- Reviewers always run at high effort. Codex uses Sol 6.2, or Astra 6.2 (its
+  strongest model) on demanding work.
 - Fable implements only after Opus fails a demanding PR twice.
 
 ### How it picks a tier
@@ -74,7 +75,7 @@ Without `/solo-orchestrate`, only the agents you name are started.
 Use a release tag, not `main`. Versions are in [CHANGELOG.md](CHANGELOG.md).
 
 ```bash
-git clone --branch 0.2.3 git@github.com:mathiasgrimm/solo-orchestrate.git ~/.claude/skills/solo-orchestrate
+git clone --branch 0.3.0 git@github.com:mathiasgrimm/solo-orchestrate.git ~/.claude/skills/solo-orchestrate
 ```
 
 To update, ask Claude:

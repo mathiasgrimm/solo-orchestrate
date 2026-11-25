@@ -65,16 +65,20 @@ of every PR, so the user can overrule it before work starts.
 
 | Tier | Plan review | Implementer | PR review |
 | --- | --- | --- | --- |
-| Light | none: your plan goes straight to the user | Sonnet 5.5, medium | Codex, high, when the diff changes code; none for chores |
-| Standard | Codex, high | Opus 5.5, high | Codex, high |
-| Demanding | Codex, high + Fable 5.2, high | Opus 5.5, high | Codex, high + Fable 5.2, high |
-| Escalation (Demanding PR failed twice) | n/a | Fable 5.2, high | Codex, high |
+| Light | none: your plan goes straight to the user | Sonnet 5.5, medium | Codex Sol 6.2, high, when the diff changes code; none for chores |
+| Standard | Codex Sol 6.2, high | Opus 5.5, high | Codex Sol 6.2, high |
+| Demanding | Codex Astra 6.2, high + Fable 5.2, high | Opus 5.5, high | Codex Astra 6.2, high + Fable 5.2, high |
+| Escalation (Demanding PR failed twice) | n/a | Fable 5.2, high | Codex Astra 6.2, high |
 
 - **Fable reviews rather than implements by default.** A review is a handful of
   turns and an implementation is hundreds, so Fable buys the most where a flaw
   is cheapest to catch: the plan and the PR. It implements only on escalation.
-- **Every reviewer runs at high effort**, whatever its configured default. The
-  model is the configured one unless the user names one.
+- **Every reviewer runs at high effort**, whatever its configured default, on
+  the model its tier row names. Sol is Codex's everyday model; Astra is its
+  most capable and costs more per review, so it goes where a missed flaw is
+  expensive, like Fable.
+- **Reuse a reviewer process only on the same model.** A series that mixes
+  Standard and Demanding PRs keeps one Sol and one Astra reviewer.
 - **No Codex installed:** use Fable 5.2 high for reviews of Opus work, and tell
   the user it is a weaker second opinion than another model family.
 - **Only Claude implements.** Codex and any other non-Claude agent review
@@ -90,6 +94,11 @@ of every PR, so the user can overrule it before work starts.
 | Sonnet 5.5, medium | `["--model", "claude-sonnet-5-5", "--effort", "medium"]` |
 | Opus 5.5, high | `["--model", "claude-opus-5-5", "--effort", "high"]` |
 | Fable 5.2, high | `["--model", "claude-fable-5-2", "--effort", "high"]` |
+
+| Model | Codex `extra_args` |
+| --- | --- |
+| Sol 6.2, high | `["-m", "gpt-6.2-sol", "-c", "model_reasoning_effort=high"]` |
+| Astra 6.2, high | `["-m", "gpt-6.2-astra", "-c", "model_reasoning_effort=high"]` |
 
 | Runtime | Model | Effort |
 | --- | --- | --- |

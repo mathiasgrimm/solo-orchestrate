@@ -3,6 +3,12 @@
 Versions follow [semantic versioning](https://semver.org). Install a tagged
 version, not `main`: `main` holds unreleased work.
 
+## 0.3.0 - 2026-11-25
+
+- Codex reviewer model by tier: Sol 6.2 high for Light and Standard, Astra 6.2
+  high for Demanding and Escalation. A reviewer process is reused only on the
+  same model.
+
 ## 0.2.3 - 2026-11-25
 
 - README workflow diagrams: the pipeline for each tier under Defaults, and a
