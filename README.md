@@ -13,6 +13,8 @@ Start the session you orchestrate from on Opus 5.5 high before calling
 
 `/solo-orchestrate <task>` runs the full pipeline. Each PR is rated by tier:
 
+<p align="center"><img src="assets/workflow-tiers.svg" alt="The pipeline for each tier: Light, Standard and Demanding" width="100%"></p>
+
 | Tier | Plan review | Implementer | PR review |
 | --- | --- | --- | --- |
 | Light | none | Sonnet 5.5, medium | Codex, high (code changes only) |
@@ -42,6 +44,16 @@ After settling what it can in planning, the orchestrator rates what is left:
 
 Every pick is shown in the plan with a reason, so you can overrule it. Full
 rules: [Picking a tier](SKILL.md#picking-a-tier).
+
+## How a run works
+
+A real run, `/solo-orchestrate add two-factor login`, split into three PRs:
+
+<p align="center"><img src="assets/workflow-run.svg" alt="A run from plan to ready to push, with three PR lanes by tier" width="100%"></p>
+
+Who does what at each step:
+
+<p align="center"><img src="assets/workflow-roles.svg" alt="Swimlanes for you, the orchestrator, the workers and the reviewers" width="100%"></p>
 
 ## Examples
 
