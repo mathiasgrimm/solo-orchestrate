@@ -3,6 +3,10 @@
 Versions follow [semantic versioning](https://semver.org). Install a tagged
 version, not `main`: `main` holds unreleased work.
 
+## 0.3.3 - 2026-11-25
+
+- README: Install and Update come right after the intro, before Defaults.
+
 ## 0.3.2 - 2026-11-25
 
 - Install by asking Claude Code with the repo URL; the hand command installs
