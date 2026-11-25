@@ -55,9 +55,6 @@ a repository the user named in this task.
   `payload.role == "assistant"`; join its `content[].text`.
 - **Claude Code:** `~/.claude/projects/<cwd with / and . replaced by ->/<session>.jsonl`.
   Take the last assistant message's text blocks.
-- **Grok:** `~/.grok/sessions/<url-encoded cwd>/<session id>/chat_history.jsonl`.
-  The final answer is the last entry with `type == "assistant"` and a string
-  `content`.
 
 Find the right session by grepping for the prompt file name you sent.
 

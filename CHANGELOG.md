@@ -3,6 +3,13 @@
 Versions follow [semantic versioning](https://semver.org). Install a tagged
 version, not `main`: `main` holds unreleased work.
 
+## Unreleased
+
+- README hero banner and logo.
+- README shows tier signals and rules as tables.
+- Grok removed: Codex is the reviewer from another model family, and Fable
+  the second reviewer.
+
 ## 0.2.1 - 2026-11-25
 
 - README explains how the orchestrator picks a tier, with a link to the full

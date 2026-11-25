@@ -3,8 +3,8 @@
 A Claude Code skill that orchestrates coding agents through
 [Solo](https://soloterm.com) (an independent skill, not affiliated with Solo).
 It plans, gets the plan reviewed, has Claude workers implement it, gets the PRs
-reviewed, and verifies every finding itself. Codex and Grok only review, never
-write code. Push, PR and merge need your explicit permission.
+reviewed, and verifies every finding itself. Codex only reviews, never
+writes code. Push, PR and merge need your explicit permission.
 
 ## Defaults
 
@@ -20,7 +20,7 @@ Start the session you orchestrate from on Opus 5.5 high before calling
 | Demanding | Codex + Fable 5.2, high | Opus 5.5, high | Codex + Fable 5.2, high |
 | Escalation | n/a | Fable 5.2, high | Codex, high |
 
-- Reviewers always run at high effort. Grok reviews only when you name it.
+- Reviewers always run at high effort.
 - Fable implements only after Opus fails a demanding PR twice.
 
 ### How it picks a tier

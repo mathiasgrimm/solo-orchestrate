@@ -1,6 +1,6 @@
 ---
 name: solo-orchestrate
-description: Coordinate other coding agents (planning reviewers, implementation workers, PR reviewers) through Solo, or through agent CLIs when Solo is not available. Use when the user invokes /solo-orchestrate with a task (run the full pipeline - plan, plan review, implementation, PR review - with the default roster), or asks for another agent in any words, with or without naming Solo, for example "spin an agent", "spin a sonnet agent", "review this with codex", "review the plan with codex and fable", "get codex to review", "check with codex", "get grok to review", "get a claude agent to implement it", "you are the orchestrator", "coordinate everything", or "hand it to an agent in project X". Also use it when the user asks to update solo-orchestrate or whether a new version exists (see references/updating.md). Do not use it to delegate on your own initiative.
+description: Coordinate other coding agents (planning reviewers, implementation workers, PR reviewers) through Solo, or through agent CLIs when Solo is not available. Use when the user invokes /solo-orchestrate with a task (run the full pipeline - plan, plan review, implementation, PR review - with the default roster), or asks for another agent in any words, with or without naming Solo, for example "spin an agent", "spin a sonnet agent", "review this with codex", "review the plan with codex and fable", "get codex to review", "check with codex", "get a claude agent to implement it", "you are the orchestrator", "coordinate everything", or "hand it to an agent in project X". Also use it when the user asks to update solo-orchestrate or whether a new version exists (see references/updating.md). Do not use it to delegate on your own initiative.
 ---
 
 # Solo Orchestrate
@@ -12,7 +12,7 @@ implement, reviewers review, and only you talk to the user.
 
 - **`/solo-orchestrate <task>`** runs the full pipeline with the defaults below:
   plan, plan review, implementation, PR review. The user can change it in the
-  same request: "no plan review", "also grok", "use fable to implement",
+  same request: "no plan review", "also review the plan with fable", "use fable to implement",
   "open PRs".
 - **Plain requests** ("spin an agent to do X", "review this with codex") start
   only the roles the user named, nothing more. You may suggest the rest in the
@@ -46,8 +46,8 @@ implement, reviewers review, and only you talk to the user.
   when Solo is absent.
 - Claude Code signed in and recent enough for every model in your tiers.
 - Optional but recommended: Codex, signed in, as the default reviewer from
-  another model family. Grok is optional and used only when named. Without
-  Codex, a different Claude model reviews (see Defaults).
+  another model family. Without Codex, a different Claude model reviews (see
+  Defaults).
 - Check each model is available on your plan before its first launch. Never
   buy usage credits or accept a paid upgrade on the user's behalf.
 - `gh` signed in, if PRs are involved.
@@ -55,8 +55,8 @@ implement, reviewers review, and only you talk to the user.
 ## 1. Defaults
 
 Edit these tables to match your setup. At the start of each session, list the
-installed runtimes with Solo's `list_agent_tools` (or `command -v claude codex
-grok` without Solo) and use the IDs it returns; do not hardcode them.
+installed runtimes with Solo's `list_agent_tools` (or `command -v claude codex`
+without Solo) and use the IDs it returns; do not hardcode them.
 
 ### Pipeline by tier
 
@@ -77,8 +77,7 @@ of every PR, so the user can overrule it before work starts.
   model is the configured one unless the user names one.
 - **No Codex installed:** use Fable 5.2 high for reviews of Opus work, and tell
   the user it is a weaker second opinion than another model family.
-- **Grok** reviews only when the user names it.
-- **Only Claude implements.** Codex, Grok and any other non-Claude agent review
+- **Only Claude implements.** Codex and any other non-Claude agent review
   plans and PRs, read-only, and never write code.
 - **At most one Fable process at a time**, reviewer or worker. The plan states
   how many Fable runs it expects.
@@ -96,7 +95,6 @@ of every PR, so the user can overrule it before work starts.
 | --- | --- | --- |
 | Claude Code | `--model <id>` | `--effort <level>` |
 | Codex | `-m <id>` | `-c model_reasoning_effort=<level>` |
-| Grok | `-m <id>` | `--reasoning-effort <level>` |
 
 Edit the model IDs as new models ship. On Bedrock or Vertex the IDs differ.
 
@@ -304,10 +302,9 @@ Solo is present when its MCP `whoami` identifies this session. Tool
 availability alone does not prove it. Without Solo:
 
 - **Launch** each agent as a background process from the repository root, in
-  its single-prompt mode: `claude -p`, `codex exec`, `grok -p`. Check each
+  its single-prompt mode: `claude -p`, `codex exec`. Check each
   CLI's `--help` for current flags. Feed the prompt explicitly, close stdin,
-  and capture the session ID and output file (Grok lets you set the ID up
-  front with `--session-id`).
+  and capture the session ID and output file.
 - **Track** the epic, permissions and process list in a `TASKS.md` in your
   scratchpad instead of Solo todos.
 - **Wait** for each process to exit instead of using idle timers, and read its
