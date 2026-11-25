@@ -8,6 +8,9 @@ write code. Push, PR and merge need your explicit permission.
 
 ## Defaults
 
+Start the session you orchestrate from on Opus 5.5 high before calling
+`/solo-orchestrate`, for example `claude --model claude-opus-5-5 --effort high`.
+
 `/solo-orchestrate <task>` runs the full pipeline. Each PR is rated by tier:
 
 | Tier | Plan review | Implementer | PR review |
@@ -19,7 +22,6 @@ write code. Push, PR and merge need your explicit permission.
 
 - Reviewers always run at high effort. Grok reviews only when you name it.
 - Fable implements only after Opus fails a demanding PR twice.
-- Run the orchestrator session itself on Opus 5.5 high.
 
 ## Examples
 
