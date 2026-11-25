@@ -3,9 +3,9 @@
 Versions follow [semantic versioning](https://semver.org). Install a tagged
 version, not `main`: `main` holds unreleased work.
 
-## Unreleased
+## 0.2.2 - 2026-11-25
 
-- README hero banner and logo.
+- README hero banner (rounded, with a stepped grid) and logo.
 - README shows tier signals and rules as tables.
 - Grok removed: Codex is the reviewer from another model family, and Fable
   the second reviewer.
