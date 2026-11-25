@@ -68,4 +68,4 @@ Find the right session by grepping for the prompt file name you sent.
   every brief.
 - **Extra launch arguments are appended** to the saved agent command. If the
   saved command already sets a model, the result depends on which flag the CLI
-  honours; confirm the running model before crediting it.
+  honors; confirm the running model before crediting it.

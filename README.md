@@ -38,7 +38,7 @@ Then ask for another agent in your own words: "spin an agent to implement
 this", "get codex to review the PR", "check the plan with codex", "you are the
 orchestrator". The skill does not delegate on its own initiative.
 
-## Customise
+## Customize
 
 Edit the **Roster** and **Worker tiers** tables in `SKILL.md` to match the
 agents and models you have. Everything else is general.

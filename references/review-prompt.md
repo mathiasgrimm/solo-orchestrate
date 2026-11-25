@@ -66,7 +66,7 @@ a recommended approach, the risks, and the alternatives considered.
   broken, a demonstrated race, or a contract that promises what the code cannot
   provide. Everything else is a nit or a follow-up.
 - For each finding give: severity, file:line evidence, the triggering
-  conditions, expected versus actual behaviour, and a suggested verification.
+  conditions, expected versus actual behavior, and a suggested verification.
   Mark anything you did not test as unverified. Separate blockers from nits.
 - On a follow-up, reread the changed files at the new head commit and reassess.
   Do not reuse an earlier conclusion without checking.
