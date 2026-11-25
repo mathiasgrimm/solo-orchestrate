@@ -13,6 +13,9 @@ Report progress in your own output. Never send messages to process <orchestrator
 ## Goal
 <what to build or find out, and why>
 
+## Branch
+Work on `<branch>`, based on `<base branch>` at `<sha>`.
+
 ## Settled decisions (do not reopen)
 - <decision>
 
@@ -22,10 +25,14 @@ Report progress in your own output. Never send messages to process <orchestrator
 ## Out of scope
 - <things to leave alone>
 
+## Before you say READY
+- <tests, static analysis, build commands that must pass>
+
 ## Hard rules
 - Do not ask the user anything. Write questions to <dir>/QUESTIONS.md, print
   `QUESTIONS READY: <path>`, and wait. For a plan, write it and print
   `PLAN READY: <path>`, then wait.
+- Do not spawn agents or subagents, and do not run review workflows.
 - <Do not push, open PRs or merge. | You may push and open the PR; never merge.>
 - Stage explicit paths only. Never `git add -A`, `git reset --hard`,
   `git checkout .`, `git clean` or `git stash`: other agents share this tree.
@@ -36,9 +43,10 @@ Report progress in your own output. Never send messages to process <orchestrator
   secrets.
 - <repository conventions: test framework, style rules>
 
-## Done markers (print exactly)
-- `PR_READY <n>` when PR <n> is ready for review.
-- `PR_UPDATED <n>` after applying review fixes.
+## Done markers (print exactly one, then stop and wait)
+- `READY branch <branch> <sha>` when work is committed locally.
+- `READY PR #<n> <sha>` when you pushed and opened the PR (only if allowed above).
+- `UPDATED <sha>` after applying review fixes.
 - `REPORT READY: <path>` for research tasks.
-Then stop and wait for the next instruction (`PROCEED <n+1>` or a fix file).
+The orchestrator replies with `PROCEED <next step>` or a fix file.
 ```
