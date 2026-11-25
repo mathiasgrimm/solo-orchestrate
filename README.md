@@ -45,8 +45,25 @@ Use a release tag, not `main`. Versions are in [CHANGELOG.md](CHANGELOG.md).
 git clone --branch 0.1.0 git@github.com:mathiasgrimm/solo-orchestrate.git ~/.claude/skills/solo-orchestrate
 ```
 
-To update, ask Claude "update solo-orchestrate". It shows what changed in newer
-versions, switches only when you agree, and keeps your own edits.
+To update, ask Claude:
+
+```text
+update solo-orchestrate
+is there a new version of solo-orchestrate?
+update solo-orchestrate to 0.2.0
+```
+
+It shows what changed in newer versions, switches only when you agree, and
+keeps your own edits. To update by hand instead:
+
+```bash
+cd ~/.claude/skills/solo-orchestrate
+git fetch --tags
+git checkout 0.2.0   # the version you want, from CHANGELOG.md
+```
+
+Start a new Claude Code session afterwards. Versions before 0.2.0 need one
+manual update first, since they don't include the update instructions.
 
 ## Customize
 
