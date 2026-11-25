@@ -1,11 +1,12 @@
-# orchestrate
+# solo-orchestrate
 
 A Claude Code skill that turns a session into an orchestrator of other coding
 agents: it plans, briefs implementation workers, sends their PRs to reviewers
 from a different model family, verifies every finding itself, and routes all
 questions back to you.
 
-It is built for [Solo](https://soloterm.com), which spawns and watches agent
+It is an independent skill built for [Solo](https://soloterm.com) (not
+affiliated with it), which spawns and watches agent
 processes and provides todos and idle timers. Without Solo, it falls back to
 running the agent CLIs as background processes.
 
@@ -23,14 +24,14 @@ different model family, and never write code.
 - **Reviews with different eyes.** The agent that wrote the code never reviews
   it. Reviewers are read-only and report file:line findings with a verdict.
 - **Verifies, never votes.** Every finding is checked against the code. Only
-  provable blockers get patch rounds; the rest become issues.
+  provable blockers get patch rounds; the rest become follow-ups.
 - **Asks before anything irreversible.** Push, PR, merge, release and deploy each
   need your words.
 
 ## Install
 
 ```bash
-git clone git@github.com:mathiasgrimm/orchestrate-skill.git ~/.claude/skills/orchestrate
+git clone git@github.com:mathiasgrimm/solo-orchestrate.git ~/.claude/skills/solo-orchestrate
 ```
 
 Then ask for another agent in your own words: "spin an agent to implement
