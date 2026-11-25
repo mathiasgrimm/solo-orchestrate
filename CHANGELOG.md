@@ -3,11 +3,12 @@
 Versions follow [semantic versioning](https://semver.org). Install a tagged
 version, not `main`: `main` holds unreleased work.
 
-## Unreleased
+## 0.2.0 - 2026-11-25
 
 - Ask Claude to "update solo-orchestrate": it checks for newer release tags,
   summarizes the CHANGELOG, and switches only with your OK, keeping local edits.
-- Shorter README.
+- Shorter README, with the orchestrator model advice up front and update
+  examples.
 
 ## 0.1.0 - 2026-11-25
 
