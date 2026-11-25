@@ -25,12 +25,23 @@ Start the session you orchestrate from on Opus 5.5 high before calling
 
 ### How it picks a tier
 
-The orchestrator settles what it can in planning, then rates what is left on
-ambiguity, reach, blast radius and checkability. It starts at Standard, drops
-to Light only when all four are low, and goes to Demanding only when a wrong
-answer would be costly and hard to catch. Every pick is shown in the plan with
-a reason, so you can overrule it. Full rules:
-[Picking a tier](SKILL.md#picking-a-tier).
+After settling what it can in planning, the orchestrator rates what is left:
+
+| Signal | Question |
+| --- | --- |
+| Ambiguity | Must the worker still make design choices? |
+| Reach | One file, one area, or many modules sharing invariants? |
+| Blast radius | Is a mistake cheap to undo, or does it lose data, money or access? |
+| Checkability | Will tests and review catch a wrong answer? |
+
+| Tier | When |
+| --- | --- |
+| Standard | The starting point: most features and bugs |
+| Light | All four signals are low |
+| Demanding | A wrong answer is costly **and** hard to catch, or the cause is still unknown |
+
+Every pick is shown in the plan with a reason, so you can overrule it. Full
+rules: [Picking a tier](SKILL.md#picking-a-tier).
 
 ## Examples
 
