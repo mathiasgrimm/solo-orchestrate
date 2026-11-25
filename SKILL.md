@@ -1,6 +1,6 @@
 ---
 name: solo-orchestrate
-description: Coordinate other coding agents (planning reviewers, implementation workers, PR reviewers) through Solo, or through agent CLIs when Solo is not available. Use when the user invokes /solo-orchestrate with a task (run the full pipeline - plan, plan review, implementation, PR review - with the default roster), or asks for another agent in any words, with or without naming Solo, for example "spin an agent", "spin a sonnet agent", "review this with codex", "review the plan with codex and fable", "get codex to review", "check with codex", "get grok to review", "get a claude agent to implement it", "you are the orchestrator", "coordinate everything", or "hand it to an agent in project X". Do not use it to delegate on your own initiative.
+description: Coordinate other coding agents (planning reviewers, implementation workers, PR reviewers) through Solo, or through agent CLIs when Solo is not available. Use when the user invokes /solo-orchestrate with a task (run the full pipeline - plan, plan review, implementation, PR review - with the default roster), or asks for another agent in any words, with or without naming Solo, for example "spin an agent", "spin a sonnet agent", "review this with codex", "review the plan with codex and fable", "get codex to review", "check with codex", "get grok to review", "get a claude agent to implement it", "you are the orchestrator", "coordinate everything", or "hand it to an agent in project X". Also use it when the user asks to update solo-orchestrate or whether a new version exists (see references/updating.md). Do not use it to delegate on your own initiative.
 ---
 
 # Solo Orchestrate
@@ -317,3 +317,8 @@ availability alone does not prove it. Without Solo:
 - **Questions** come back in the agent's final output instead of a file.
 
 Do not start Solo just for this.
+
+## Updating this skill
+
+When the user asks to update solo-orchestrate, or whether a newer version
+exists, follow [references/updating.md](references/updating.md).
