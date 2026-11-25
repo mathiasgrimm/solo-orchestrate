@@ -3,6 +3,11 @@
 Versions follow [semantic versioning](https://semver.org). Install a tagged
 version, not `main`: `main` holds unreleased work.
 
+## 0.3.1 - 2026-11-25
+
+- Workflow diagrams show the Codex model like the Claude ones: Sol 6.2 as a
+  plain ring, Astra 6.2 as a ring with a dot, labelled at each review gate.
+
 ## 0.3.0 - 2026-11-25
 
 - Codex reviewer model by tier: Sol 6.2 high for Light and Standard, Astra 6.2
