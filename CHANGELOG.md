@@ -3,6 +3,11 @@
 Versions follow [semantic versioning](https://semver.org). Install a tagged
 version, not `main`: `main` holds unreleased work.
 
+## 0.2.3 - 2026-11-25
+
+- README workflow diagrams: the pipeline for each tier under Defaults, and a
+  "How a run works" section with a full example run and who does what.
+
 ## 0.2.2 - 2026-11-25
 
 - README hero banner (rounded, with a stepped grid) and logo.

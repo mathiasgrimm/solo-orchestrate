@@ -74,7 +74,7 @@ Without `/solo-orchestrate`, only the agents you name are started.
 Use a release tag, not `main`. Versions are in [CHANGELOG.md](CHANGELOG.md).
 
 ```bash
-git clone --branch 0.2.2 git@github.com:mathiasgrimm/solo-orchestrate.git ~/.claude/skills/solo-orchestrate
+git clone --branch 0.2.3 git@github.com:mathiasgrimm/solo-orchestrate.git ~/.claude/skills/solo-orchestrate
 ```
 
 To update, ask Claude:
