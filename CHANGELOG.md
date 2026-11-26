@@ -3,6 +3,10 @@
 Versions follow [semantic versioning](https://semver.org). Install a tagged
 version, not `main`: `main` holds unreleased work.
 
+## 0.3.6 - 2026-11-26
+
+- README screenshot of a real run in Solo, under "How a run works".
+
 ## 0.3.5 - 2026-11-26
 
 - README Install is just "ask Claude Code", with no manual command; clones use
