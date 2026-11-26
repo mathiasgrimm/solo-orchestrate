@@ -8,6 +8,10 @@ writes code. Push, PR and merge need your explicit permission.
 
 ## Install
 
+> For now this skill is installed and updated with git, not as a Claude Code
+> plugin through `/plugin`. You clone a release tag, and Claude updates it to
+> newer tags on request.
+
 Ask Claude Code:
 
 ```text
@@ -109,3 +113,7 @@ Without `/solo-orchestrate`, only the agents you name are started.
 
 Edit the tables under **Defaults** in `SKILL.md`. If your own instructions
 forbid overriding configured models, the skill follows them.
+
+## License
+
+[MIT](LICENSE)
