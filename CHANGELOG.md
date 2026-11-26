@@ -3,7 +3,7 @@
 Versions follow [semantic versioning](https://semver.org). Install a tagged
 version, not `main`: `main` holds unreleased work.
 
-## Unreleased
+## 0.3.6 - 2026-11-26
 
 - README screenshot of a real run in Solo, under "How a run works".
 
