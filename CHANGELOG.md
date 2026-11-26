@@ -6,6 +6,7 @@ version, not `main`: `main` holds unreleased work.
 ## Unreleased
 
 - MIT license.
+- README notes that installs use git for now, not the Claude Code plugin system.
 
 ## 0.3.3 - 2026-11-25
 

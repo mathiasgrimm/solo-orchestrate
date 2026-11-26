@@ -8,6 +8,10 @@ writes code. Push, PR and merge need your explicit permission.
 
 ## Install
 
+> For now this skill is installed and updated with git, not as a Claude Code
+> plugin through `/plugin`. You clone a release tag, and Claude updates it to
+> newer tags on request.
+
 Ask Claude Code:
 
 ```text
