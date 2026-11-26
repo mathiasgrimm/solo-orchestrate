@@ -3,7 +3,7 @@
 Versions follow [semantic versioning](https://semver.org). Install a tagged
 version, not `main`: `main` holds unreleased work.
 
-## Unreleased
+## 0.3.5 - 2026-11-26
 
 - README Install is just "ask Claude Code", with no manual command; clones use
   the HTTPS address so they work without an SSH key.
