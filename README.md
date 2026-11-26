@@ -1,10 +1,23 @@
 <p align="center"><img src="assets/hero.svg" alt="solo-orchestrate: Claude conducts your agents in Solo" width="100%"></p>
 
-A Claude Code skill that orchestrates coding agents through
-[Solo](https://soloterm.com) (an independent skill, not affiliated with Solo).
-It plans, gets the plan reviewed, has Claude workers implement it, gets the PRs
-reviewed, and verifies every finding itself. Codex only reviews, never
-writes code. Push, PR and merge need your explicit permission.
+> [!NOTE]
+> This is an independent, community skill. It is not an official or
+> first-party Solo project, and is not affiliated with, endorsed by, or
+> sponsored by Solo, Anthropic or OpenAI. "Solo", "Claude" and "Codex"
+> are trademarks of their respective owners.
+
+A Claude Code skill that runs a coding task through other agents in
+[Solo](https://soloterm.com). `/solo-orchestrate <task>` does:
+
+1. **Plan:** your Claude session (Opus 5.5, high) plans the work.
+2. **Plan review:** Codex Sol 6.2 reviews it; on demanding work, Codex
+   Astra 6.2 and Fable 5.2. Chores skip this step.
+3. **Implement:** Claude workers picked per task: Sonnet 5.5 for chores,
+   Opus 5.5 for most work, Fable 5.2 only if Opus fails twice.
+4. **PR review:** Codex Sol 6.2; on demanding work, Codex Astra 6.2 and
+   Fable 5.2. All reviewers run at high effort and never write code.
+5. **Verify:** the orchestrator checks every finding itself. Push, PR and
+   merge wait for your word.
 
 ## Install
 
