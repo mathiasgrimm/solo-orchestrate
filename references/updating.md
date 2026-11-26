@@ -32,8 +32,10 @@ git tag --sort=-v:refname | head -5                                    # newest 
 - Summarize every entry between the current version and the newest.
 - Flag breaking releases: a new major version, or a new minor version while
   still on `0.x`.
-- Ask the user whether to update, and to which version. Changing versions
-  changes how the skill behaves, so do not switch without their answer.
+- If the user asked to update and the newest release is not breaking, switch
+  to it without asking again: their request is the answer. Otherwise (they only
+  asked whether a new version exists, or a release is breaking) ask whether to
+  update and to which version, and wait for the answer.
 
 ## 4. Switch without losing their edits
 

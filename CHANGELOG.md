@@ -3,6 +3,13 @@
 Versions follow [semantic versioning](https://semver.org). Install a tagged
 version, not `main`: `main` holds unreleased work.
 
+## 0.3.7 - 2026-11-26
+
+- README Update section shows a screenshot of an update.
+- "update solo-orchestrate" switches to the newest non-breaking release without
+  asking again; it still asks when you only check for a new version or a
+  release is breaking.
+
 ## 0.3.6 - 2026-11-26
 
 - README screenshot of a real run in Solo, under "How a run works".
