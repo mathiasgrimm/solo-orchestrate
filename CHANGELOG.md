@@ -3,6 +3,11 @@
 Versions follow [semantic versioning](https://semver.org). Install a tagged
 version, not `main`: `main` holds unreleased work.
 
+## 0.3.8 - 2026-11-26
+
+- README intro: a Solo disclaimer note and the pipeline as five steps, naming
+  the model at each step.
+
 ## 0.3.7 - 2026-11-26
 
 - README Update section shows a screenshot of an update.
