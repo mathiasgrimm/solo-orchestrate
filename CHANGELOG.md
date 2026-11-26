@@ -3,7 +3,7 @@
 Versions follow [semantic versioning](https://semver.org). Install a tagged
 version, not `main`: `main` holds unreleased work.
 
-## Unreleased
+## 0.3.4 - 2026-11-26
 
 - MIT license.
 - README notes that installs use git for now, not the Claude Code plugin system.
