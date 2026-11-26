@@ -3,6 +3,10 @@
 Versions follow [semantic versioning](https://semver.org). Install a tagged
 version, not `main`: `main` holds unreleased work.
 
+## Unreleased
+
+- MIT license.
+
 ## 0.3.3 - 2026-11-25
 
 - README: Install and Update come right after the intro, before Defaults.

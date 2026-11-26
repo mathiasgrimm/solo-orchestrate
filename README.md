@@ -109,3 +109,7 @@ Without `/solo-orchestrate`, only the agents you name are started.
 
 Edit the tables under **Defaults** in `SKILL.md`. If your own instructions
 forbid overriding configured models, the skill follows them.
+
+## License
+
+[MIT](LICENSE)
