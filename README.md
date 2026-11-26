@@ -85,6 +85,12 @@ Who does what at each step:
 
 <p align="center"><img src="assets/workflow-roles.svg" alt="Swimlanes for you, the orchestrator, the workers and the reviewers" width="100%"></p>
 
+What it looks like in Solo, during a real run of `--round-up` on a small demo
+project. Codex's plan review found two precision bugs; the orchestrator
+reproduced them, revised the plan and checked the worker's branch itself:
+
+<p align="center"><img src="assets/solo-run.png" alt="Solo during a run: the orchestrator with a Codex plan reviewer and an Opus worker, and the orchestrator's log" width="100%"></p>
+
 ## Examples
 
 ```text
