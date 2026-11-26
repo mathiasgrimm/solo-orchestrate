@@ -3,7 +3,7 @@
 Versions follow [semantic versioning](https://semver.org). Install a tagged
 version, not `main`: `main` holds unreleased work.
 
-## Unreleased
+## 0.3.7 - 2026-11-26
 
 - README Update section shows a screenshot of an update.
 - "update solo-orchestrate" switches to the newest non-breaking release without
