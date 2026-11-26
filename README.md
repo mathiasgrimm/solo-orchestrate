@@ -18,17 +18,7 @@ Ask Claude Code:
 install the skill from https://github.com/mathiasgrimm/solo-orchestrate
 ```
 
-Claude reads this README, finds the newest release tag, and clones that tag
-into `~/.claude/skills/solo-orchestrate`. It never installs `main`, which holds
-unreleased work. The skill is ready in the same session, with no restart.
-
-The same steps by hand:
-
-```bash
-TAG=$(git ls-remote --tags --refs --sort=-v:refname git@github.com:mathiasgrimm/solo-orchestrate.git \
-  | grep -oE 'refs/tags/[0-9]+\.[0-9]+\.[0-9]+$' | head -1 | cut -d/ -f3)
-git clone --branch "$TAG" git@github.com:mathiasgrimm/solo-orchestrate.git ~/.claude/skills/solo-orchestrate
-```
+It installs the newest release, never `main`.
 
 ## Update
 

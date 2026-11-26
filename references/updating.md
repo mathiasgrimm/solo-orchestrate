@@ -9,8 +9,9 @@ It never edits the skill's files by hand and never pushes anything.
 - The install folder is the one holding this skill's `SKILL.md`, usually
   `~/.claude/skills/solo-orchestrate`. Resolve links with `realpath`.
 - Check it is a git checkout of this skill: `git -C <dir> remote get-url origin`.
-  If it is not a git checkout (copied files), stop and give the user the
-  install command from the README instead.
+  If it is not a git checkout (copied files), stop and offer to reinstall it:
+  clone https://github.com/mathiasgrimm/solo-orchestrate.git and check out the
+  newest release tag.
 
 ## 2. Compare versions
 
