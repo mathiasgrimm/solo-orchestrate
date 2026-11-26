@@ -30,8 +30,13 @@ update solo-orchestrate
 update solo-orchestrate to 0.3.1
 ```
 
-It shows what changed in newer versions, switches only when you agree, and
-keeps your own edits. By hand: `git fetch --tags && git checkout <version>` in
+It shows what changed in newer versions and keeps your own edits. If you only
+ask whether there is a new version, or the newer one has breaking changes, it
+asks before switching.
+
+<p align="center"><img src="assets/update-run.jpg" alt="Claude updating solo-orchestrate from 0.3.3 to 0.3.6 and summarizing what changed" width="100%"></p>
+
+By hand: `git fetch --tags && git checkout <version>` in
 `~/.claude/skills/solo-orchestrate`. Versions before 0.2.0 need that manual
 update once, since they don't include the update instructions.
 
